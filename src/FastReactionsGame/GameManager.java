@@ -92,7 +92,7 @@ public class GameManager {
 	}
 
 	public void setRound() {
-		this.round++;
+		round++;
 	}
 
 	public int[] getColors() {
