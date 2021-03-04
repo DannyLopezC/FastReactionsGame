@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>80</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>GameManager
+--
+board
+state
+--
+setBoard()
+setGameState()
+reset()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>80</y>
+      <w>100</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PlayerManager
+--
+Attempts
+score
+--
+setAttempts()
+setScore()
+reset()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
