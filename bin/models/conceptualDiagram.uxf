@@ -6,8 +6,8 @@
     <coordinates>
       <x>50</x>
       <y>80</y>
-      <w>100</w>
-      <h>100</h>
+      <w>110</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>GameManager
 --
@@ -23,7 +23,7 @@ reset()
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
+      <x>490</x>
       <y>80</y>
       <w>100</w>
       <h>120</h>
