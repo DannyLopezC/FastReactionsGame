@@ -1,21 +1,21 @@
 package FastReactionsGame;
 
-import java.awt.Event;
 import java.awt.EventQueue;
-
-import FastReactionsGame.GUIGridBagLayoutView;
 
 public class PrincipalFastReactions {
 
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		EventQueue.invokeLater(new Runnable() {
-			@Override
 			public void run() {
-//				GUICrapsView myWindow = new GUICrapsView();
-
-				GUIGridBagLayoutView myView = new GUIGridBagLayoutView();
+				try {
+					Window frame = new Window();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}
