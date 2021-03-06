@@ -13,6 +13,7 @@ public class PrincipalFastReactions {
 				try {
 					Window frame = new Window();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
