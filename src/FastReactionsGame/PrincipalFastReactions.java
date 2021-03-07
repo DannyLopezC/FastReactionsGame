@@ -11,7 +11,7 @@ public class PrincipalFastReactions {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Window frame = new Window();
+					MainMenu frame = new MainMenu();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -20,5 +20,4 @@ public class PrincipalFastReactions {
 			}
 		});
 	}
-
 }
