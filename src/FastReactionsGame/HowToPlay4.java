@@ -12,14 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class HowToPlay1 extends JFrame {
+public class HowToPlay4 extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void newHowToPlay1() {
+	public static void newHowToPlay2() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -35,7 +35,7 @@ public class HowToPlay1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public HowToPlay1() {
+	public HowToPlay4() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1154, 646);
 		this.setUndecorated(true);
@@ -45,19 +45,19 @@ public class HowToPlay1 extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 
-		JButton btnRightArrow = new JButton("");
-		btnRightArrow.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/RightArrow.png")));
-		btnRightArrow.setOpaque(false);
-		btnRightArrow.setFocusPainted(false);
-		btnRightArrow.setContentAreaFilled(false);
-		btnRightArrow.setBorderPainted(false);
-		btnRightArrow.setBounds(866, 197, 79, 82);
-		contentPane.add(btnRightArrow);
+		JButton btnLeftArrow = new JButton("");
+		btnLeftArrow.setIcon(new ImageIcon(HowToPlay3.class.getResource("/images/LeftArrow.png")));
+		btnLeftArrow.setOpaque(false);
+		btnLeftArrow.setFocusPainted(false);
+		btnLeftArrow.setContentAreaFilled(false);
+		btnLeftArrow.setBorderPainted(false);
+		btnLeftArrow.setBounds(136, 197, 79, 82);
+		contentPane.add(btnLeftArrow);
 
-		JLabel lblPage = new JLabel("1/4");
+		JLabel lblPage = new JLabel("4/4");
 		lblPage.setForeground(Color.WHITE);
 		lblPage.setFont(new Font("Bahnschrift", Font.PLAIN, 37));
-		lblPage.setBounds(506, 26, 47, 45);
+		lblPage.setBounds(506, 26, 60, 45);
 		contentPane.add(lblPage);
 
 		JLabel lblImageExample = new JLabel("");
@@ -68,19 +68,20 @@ public class HowToPlay1 extends JFrame {
 		lblImageExample.setBounds(215, 70, 654, 331);
 		contentPane.add(lblImageExample);
 
-		JLabel lblText3 = new JLabel("at any time thanks to a blue border.");
+		JLabel lblText3 = new JLabel("reaction is lower.  You will need Fast Reactions!");
 		lblText3.setForeground(Color.BLACK);
 		lblText3.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
 		lblText3.setBounds(136, 535, 861, 59);
 		contentPane.add(lblText3);
 
-		JLabel lblText2 = new JLabel("by 1 showing different designs. \r\nYou will be able to know which tile changes");
+		JLabel lblText2 = new JLabel(
+				"progresses the rate at which the tiles change is higher and your time\r\n\r\n\r\n");
 		lblText2.setForeground(Color.BLACK);
 		lblText2.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
 		lblText2.setBounds(136, 485, 861, 59);
 		contentPane.add(lblText2);
 
-		JLabel lblText1 = new JLabel("In Adosa2 a series of tiles appear on the screen. The tiles are changing 1");
+		JLabel lblText1 = new JLabel("Watch out! if you do not press in time you will lose lives. As the game ");
 		lblText1.setForeground(Color.BLACK);
 		lblText1.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
 		lblText1.setBounds(136, 435, 861, 59);
