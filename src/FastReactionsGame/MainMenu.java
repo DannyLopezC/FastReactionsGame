@@ -97,6 +97,5 @@ public class MainMenu extends JFrame {
 		lblBackground.setIcon(new ImageIcon(MainMenu.class.getResource("/images/Recurso 1.png")));
 		lblBackground.setBounds(0, 0, 1154, 646);
 		contentPane.add(lblBackground);
-
 	}
 }

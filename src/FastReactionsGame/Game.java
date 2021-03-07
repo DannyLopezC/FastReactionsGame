@@ -61,7 +61,7 @@ public class Game extends JFrame {
 		btnExitMain_1.setFocusPainted(false);
 		btnExitMain_1.setContentAreaFilled(false);
 		btnExitMain_1.setBorderPainted(false);
-		btnExitMain_1.setBounds(423, 176, 339, 268);
+		btnExitMain_1.setBounds(547, 250, 110, 114);
 		contentPane.add(btnExitMain_1);
 
 		JLabel lblLives3 = new JLabel("");
@@ -85,7 +85,7 @@ public class Game extends JFrame {
 		lblScore.setBounds(155, 227, 110, 54);
 		contentPane.add(lblScore);
 
-		JLabel lblNewLabel = new JLabel("Score:");
+		JLabel lblNewLabel = new JLabel("Score");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Bahnschrift", Font.PLAIN, 37));
 		lblNewLabel.setBounds(35, 227, 110, 54);
