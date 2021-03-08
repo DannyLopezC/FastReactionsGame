@@ -38,7 +38,7 @@ public class GameManager {
 
 	public void setOutBoard() {
 		outBoard.clear();
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 12; i++) {
 			outBoard.add(i + 1);
 		}
 	}
@@ -56,7 +56,8 @@ public class GameManager {
 				outBoard.remove(id);
 			}
 		} else {
-			isDuplicate = random.nextBoolean();
+			isDuplicate = random.nextInt(2) == 1 ? true : false;
+
 			int id = random.nextInt(pieces);
 			if (isDuplicate) {
 				int targetId = 0;
@@ -95,12 +96,11 @@ public class GameManager {
 	}
 
 	public void reset() {
-		for (int i = 0; i < inBoard.size(); i++) {
-			inBoard.add(i, i);
-			outBoard.add(i, i);
-		}
+		setOutBoard();
 
 		round = 0;
+		pieces = 3;
+		reactionTime = 2500;
 	}
 
 	public int getRound() {

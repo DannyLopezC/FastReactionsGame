@@ -17,15 +17,16 @@ import javax.swing.border.EmptyBorder;
 public class GameOver extends JFrame {
 
 	private JPanel contentPane;
+	private int score, accurate, mistakes;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void newGameOver() {
+	public static void newGameOver(int localScore, int localAccurate, int localMistakes) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameOver frame = new GameOver();
+					GameOver frame = new GameOver(localScore, localAccurate, localMistakes);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +38,11 @@ public class GameOver extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameOver() {
+	public GameOver(int localScore, int localAccurate, int localMistakes) {
+		score = localScore;
+		accurate = localAccurate;
+		mistakes = localMistakes;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1154, 646);
 		this.setUndecorated(true);
@@ -50,9 +55,9 @@ public class GameOver extends JFrame {
 		JButton btnPlayAgain = new JButton("");
 		btnPlayAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 				Game game = new Game();
 				game.newScreen();
-				setVisible(false);
 			}
 		});
 
@@ -67,9 +72,9 @@ public class GameOver extends JFrame {
 		JButton btnExit = new JButton("");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 				MainMenu mainMenu = new MainMenu();
 				mainMenu.newMain();
-				setVisible(false);
 			}
 		});
 		btnExit.setIcon(new ImageIcon(GameOver.class.getResource("/images/Recurso 3.png")));
@@ -80,20 +85,20 @@ public class GameOver extends JFrame {
 		btnExit.setBounds(590, 521, 261, 62);
 		contentPane.add(btnExit);
 
-		JLabel lblScore = new JLabel("00000");
+		JLabel lblScore = new JLabel(score + "");
 		lblScore.setForeground(Color.WHITE);
 		lblScore.setFont(new Font("Bahnschrift", Font.PLAIN, 37));
 		lblScore.setBounds(498, 322, 110, 54);
 		contentPane.add(lblScore);
 
-		JLabel lblMistakes = new JLabel("00");
+		JLabel lblMistakes = new JLabel(mistakes + "");
 		lblMistakes.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblMistakes.setForeground(Color.RED);
 		lblMistakes.setFont(new Font("Bahnschrift", Font.PLAIN, 37));
 		lblMistakes.setBounds(547, 287, 61, 45);
 		contentPane.add(lblMistakes);
 
-		JLabel lblAciertos = new JLabel("00");
+		JLabel lblAciertos = new JLabel(accurate + "");
 		lblAciertos.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblAciertos.setForeground(Color.GREEN);
 		lblAciertos.setFont(new Font("Bahnschrift", Font.PLAIN, 37));

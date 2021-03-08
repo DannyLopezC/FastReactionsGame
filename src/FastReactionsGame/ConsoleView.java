@@ -16,7 +16,11 @@ public class ConsoleView {
 	}
 
 	public void startGame() {
-//		gameManager.setBoard();
+		if (gameManager.getState() == 1 || gameManager.getState() == 2 || gameManager.getState() == 0) {
+			gameManager.setInBoard(true);
+		} else {
+			gameManager.setInBoard(false);
+		}
 
 		for (int i = 0; i < 8; i++) {
 			System.out.print(gameManager.getBoard(i) + ",");
@@ -31,23 +35,19 @@ public class ConsoleView {
 			switch (gameManager.getState()) {
 			case 1:
 				gameManager.setRound();
-				playerManager.setAccurate();
 				System.out.println("correcto");
 				break;
 			case 2:
-				playerManager.setAttempts();
-				playerManager.setMistakes();
 				gameManager.setRound();
 				System.out.println("no");
 				System.out.println(gameManager.getState() + "state");
+				break;
 			}
 		} else {
 			gameManager.setGameState(false);
 
 			switch (gameManager.getState()) {
 			case 2:
-				playerManager.setAttempts();
-				playerManager.setMistakes();
 				gameManager.setRound();
 				System.out.println("debiste press");
 				break;

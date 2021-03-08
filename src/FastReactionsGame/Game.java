@@ -29,6 +29,7 @@ public class Game extends JFrame {
 	JLabel lblTile3 = new JLabel("");
 	JLabel lblTile2 = new JLabel("");
 	JLabel lblTile1 = new JLabel("");
+	JLabel lblScore = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -111,6 +112,8 @@ public class Game extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				MainMenu mainMenu = new MainMenu();
 				mainMenu.newMain();
+				gameManager.reset();
+				playerManager.reset();
 				setVisible(false);
 			}
 		});
@@ -146,7 +149,7 @@ public class Game extends JFrame {
 		lblLives1.setBounds(35, 292, 79, 82);
 		contentPane.add(lblLives1);
 
-		JLabel lblScore = new JLabel("00000");
+		lblScore.setText("00" + playerManager.getScore());
 		lblScore.setForeground(Color.WHITE);
 		lblScore.setFont(new Font("Bahnschrift", Font.PLAIN, 37));
 		lblScore.setBounds(155, 227, 110, 54);
@@ -172,7 +175,7 @@ public class Game extends JFrame {
 		contentPane.add(lblBackground);
 	}
 
-	Timer timer = new Timer(2000, new ActionListener() {
+	Timer timer = new Timer(1500, new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -186,12 +189,10 @@ public class Game extends JFrame {
 		switch (gameManager.getState()) {
 		case 1:
 			gameManager.setRound();
-			playerManager.setAccurate();
 			break;
 		case 2:
-			playerManager.setAttempts();
-			playerManager.setMistakes();
 			gameManager.setRound();
+			System.out.println("pierde");
 			break;
 		case 3:
 			gameManager.setRound();
@@ -199,12 +200,17 @@ public class Game extends JFrame {
 			setBoardUI();
 			return;
 		}
+		playerManager.setScreenVariables(gameManager.getState());
 
 		if (playerManager.getAttempts() <= 0) {
 			timer.stop();
-			GameOver gameOver = new GameOver();
-			gameOver.newGameOver();
+			GameOver gameOver = new GameOver(playerManager.getScore(), playerManager.getAccurate(),
+					playerManager.getMistakes());
+			gameOver.newGameOver(playerManager.getScore(), playerManager.getAccurate(), playerManager.getMistakes());
+			gameManager.reset();
+			playerManager.reset();
 			setVisible(false);
+			return;
 		}
 
 		gameManager.setInBoard(true);
@@ -228,5 +234,7 @@ public class Game extends JFrame {
 		lblTile2.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(1) + ".png"));
 
 		lblTile1.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(0) + ".png"));
+
+		lblScore.setText("00" + playerManager.getScore());
 	}
 }

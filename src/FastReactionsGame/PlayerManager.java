@@ -15,36 +15,35 @@ public class PlayerManager {
 		return mistakes;
 	}
 
-	public void setMistakes() {
-		mistakes++;
-	}
-
 	public int getAccurate() {
 		return accurate;
-	}
-
-	public void setAccurate() {
-		accurate++;
 	}
 
 	public int getAttempts() {
 		return attempts;
 	}
 
-	public void setAttempts() {
-		attempts--;
-	}
-
 	public int getScore() {
 		return score;
-	}
-
-	public void setScore() {
-		score += 50;
 	}
 
 	public void reset() {
 		attempts = 3;
 		score = 0;
+		mistakes = 0;
+		accurate = 0;
+	}
+
+	public void setScreenVariables(int state) {
+		switch (state) {
+		case 1:
+			score += 50;
+			accurate++;
+			break;
+		case 2:
+			attempts--;
+			mistakes++;
+			break;
+		}
 	}
 }
