@@ -16,7 +16,7 @@ public class ConsoleView {
 	}
 
 	public void startGame() {
-		gameManager.setBoard();
+//		gameManager.setBoard();
 
 		for (int i = 0; i < 8; i++) {
 			System.out.print(gameManager.getBoard(i) + ",");
@@ -39,6 +39,7 @@ public class ConsoleView {
 				playerManager.setMistakes();
 				gameManager.setRound();
 				System.out.println("no");
+				System.out.println(gameManager.getState() + "state");
 			}
 		} else {
 			gameManager.setGameState(false);

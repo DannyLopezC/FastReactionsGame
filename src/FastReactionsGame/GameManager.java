@@ -4,13 +4,16 @@
  */
 package FastReactionsGame;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameManager {
 
-	private int[] board;
+	private ArrayList<Integer> inBoard, outBoard;
+	private int pieces;
 	private int round, state;
 	private int reactionTime;
+	private boolean isDuplicate;
 
 	public int getReactionTime() {
 		return reactionTime;
@@ -19,84 +22,82 @@ public class GameManager {
 	private Random random;
 
 	public GameManager() {
-		board = new int[8];
+		inBoard = new ArrayList<Integer>();
+		outBoard = new ArrayList<Integer>();
+		setOutBoard();
 
 		round = 0;
-		reactionTime = 1500;
+		pieces = 3;
+		reactionTime = 2500;
 		random = new Random();
+	}
+
+	public int getPieces() {
+		return pieces;
+	}
+
+	public void setOutBoard() {
+		outBoard.clear();
+		for (int i = 0; i < 8; i++) {
+			outBoard.add(i + 1);
+		}
 	}
 
 	/**
 	 * Sets the board.
 	 */
-	public void setBoard() {
-		if (round < 2) {
-			// setting the board if didnt before
-			for (int i = 0; i < 2; i++) {
-				if (board[i] == 0) {
-					board[i] = random.nextInt(7) + 1;
-				}
+	public void setInBoard(boolean set) {
+		if (set) {
+			inBoard.clear();
+			setOutBoard();
+			for (int i = 0; i < pieces; i++) {
+				int id = random.nextInt(outBoard.size());
+				inBoard.add(outBoard.get(id));
+				outBoard.remove(id);
 			}
-
-			reactionTime -= 100;
-			board[random.nextInt(1)] = random.nextInt(7) + 1;
-		} else if (round < 4) {
-			for (int i = 0; i < 4; i++) {
-				if (board[i] == 0) {
-					board[i] = random.nextInt(7) + 1;
-				}
-			}
-
-			reactionTime -= 100;
-			board[random.nextInt(3)] = random.nextInt(7) + 1;
-		} else if (round < 6) {
-			for (int i = 0; i < 6; i++) {
-				if (board[i] == 0) {
-					board[i] = random.nextInt(7) + 1;
-				}
-			}
-
-			reactionTime -= 100;
-			board[random.nextInt(5)] = random.nextInt(7) + 1;
 		} else {
-			for (int i = 0; i < 8; i++) {
-				if (board[i] == 0) {
-					board[i] = random.nextInt(7) + 1;
-				}
-			}
+			isDuplicate = random.nextBoolean();
+			int id = random.nextInt(pieces);
+			if (isDuplicate) {
+				int targetId = 0;
 
-			reactionTime = 700;
-			board[random.nextInt(7)] = random.nextInt(7) + 1;
+				do {
+					targetId = random.nextInt(pieces);
+				} while (id == targetId);
+
+				inBoard.set(id, inBoard.get(targetId));
+
+			} else {
+				int inValue = inBoard.get(id);
+				int outId = random.nextInt(outBoard.size());
+				inBoard.set(id, outBoard.get(outId));
+				outBoard.remove(outId);
+				outBoard.add(inValue);
+			}
 		}
 	}
 
 	public void setGameState(boolean buttonPressed) {
 
-		for (int i = 0; i < board.length; i++) {
-			if (board[i] == 0)
-				return;
-			for (int j = i + 1; j < board.length; j++) {
-
-				if (buttonPressed) {
-					if (board[j] == board[i]) {
-						state = 1;
-					} else {
-						state = 2;
-					}
-				} else {
-					if (board[j] == board[i] && board[i] != 0) {
-						state = 2;
-					} else {
-						state = 3;
-					}
-				}
+		if (buttonPressed) {
+			if (isDuplicate) {
+				state = 1;
+			} else {
+				state = 2;
+			}
+		} else {
+			if (isDuplicate) {
+				state = 2;
+			} else {
+				state = 3;
 			}
 		}
 	}
 
 	public void reset() {
-		for (int i = 0; i < board.length; i++) {
-			board[i] = 0;
+		for (int i = 0; i < inBoard.size(); i++) {
+			inBoard.add(i, i);
+			outBoard.add(i, i);
 		}
 
 		round = 0;
@@ -107,15 +108,28 @@ public class GameManager {
 	}
 
 	public void setRound() {
-		if (state == 2) {
-			round--;
-		} else {
+		switch (state) {
+		case 1:
 			round++;
+			if (pieces < 8)
+				pieces++;
+			break;
+		case 2:
+			if (round > 0)
+				round--;
+			if (pieces > 3)
+				pieces--;
+			break;
 		}
 	}
 
 	public int getBoard(int i) {
-		return board[i];
+
+		if (inBoard.size() <= i) {
+			return 0;
+		} else {
+			return inBoard.get(i);
+		}
 	}
 
 	public int getState() {

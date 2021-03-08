@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 public class Game extends JFrame {
@@ -59,19 +60,51 @@ public class Game extends JFrame {
 		setLocationRelativeTo(null);
 
 		lblTile8 = new JLabel("");
+		lblTile8.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile8.setBounds(280, 442, 187, 193);
+		contentPane.add(lblTile8);
+
 		lblTile7 = new JLabel("");
+		lblTile7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile7.setBounds(280, -13, 187, 193);
+		contentPane.add(lblTile7);
+
 		lblTile6 = new JLabel("");
+		lblTile6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile6.setBounds(733, -13, 187, 193);
+		contentPane.add(lblTile6);
+
 		lblTile5 = new JLabel("");
+		lblTile5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile5.setBounds(747, 442, 187, 193);
+		contentPane.add(lblTile5);
+
 		lblTile4 = new JLabel("");
+		lblTile4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile4.setBounds(376, 351, 187, 178);
+		contentPane.add(lblTile4);
+
 		lblTile3 = new JLabel("");
+		lblTile3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile3.setBounds(391, 90, 180, 184);
+		contentPane.add(lblTile3);
+
 		lblTile2 = new JLabel("");
+		lblTile2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile2.setBounds(632, 90, 187, 193);
+		contentPane.add(lblTile2);
+
 		lblTile1 = new JLabel("");
+		lblTile1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTile1.setBounds(632, 339, 201, 193);
+		contentPane.add(lblTile1);
 
 		gameManager = new GameManager();
 		playerManager = new PlayerManager();
 
-		gameManager.setBoard();
-		setBoard();
+		gameManager.setInBoard(true);
+		setBoardUI();
+		timer.start();
 
 		JButton btnExitMain = new JButton("");
 		btnExitMain.addActionListener(new ActionListener() {
@@ -139,87 +172,61 @@ public class Game extends JFrame {
 		contentPane.add(lblBackground);
 	}
 
-//	Timer timer = new Timer(gameManager.getReactionTime(), new ActionListener() {
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			// TODO Auto-generated method stub
-//
-//		}
-//	});
+	Timer timer = new Timer(2000, new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			gameManager.setGameState(false);
+			evaluateGameState();
+		}
+	});
 
 	private void evaluateGameState() {
 		switch (gameManager.getState()) {
 		case 1:
 			gameManager.setRound();
-			gameManager.setBoard();
-			setBoard();
 			playerManager.setAccurate();
-			System.out.println("gana");
 			break;
 		case 2:
 			playerManager.setAttempts();
 			playerManager.setMistakes();
-			System.out.println(playerManager.getAttempts());
 			gameManager.setRound();
-			gameManager.setBoard();
-			setBoard();
-			System.out.println("pierde");
 			break;
 		case 3:
-			gameManager.setBoard();
-			setBoard();
-			System.out.println("no hace nada");
+			gameManager.setRound();
+			gameManager.setInBoard(false);
+			setBoardUI();
+			return;
 		}
 
 		if (playerManager.getAttempts() <= 0) {
-			System.out.println("game over");
+			timer.stop();
 			GameOver gameOver = new GameOver();
 			gameOver.newGameOver();
 			setVisible(false);
 		}
+
+		gameManager.setInBoard(true);
+		setBoardUI();
 	}
 
-	private void setBoard() {
+	private void setBoardUI() {
 
 		lblTile8.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(7) + ".png"));
-		lblTile8.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTile8.setBounds(280, 442, 187, 193);
-		contentPane.add(lblTile8);
 
 		lblTile7.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(6) + ".png"));
-		lblTile7.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTile7.setBounds(280, -13, 187, 193);
-		contentPane.add(lblTile7);
 
 		lblTile6.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(5) + ".png"));
-		lblTile6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTile6.setBounds(733, -13, 187, 193);
-		contentPane.add(lblTile6);
 
 		lblTile5.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(4) + ".png"));
-		lblTile5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTile5.setBounds(753, 442, 187, 193);
-		contentPane.add(lblTile5);
 
 		lblTile4.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(3) + ".png"));
-		lblTile4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTile4.setBounds(376, 351, 187, 178);
-		contentPane.add(lblTile4);
 
 		lblTile3.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(2) + ".png"));
-		lblTile3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTile3.setBounds(391, 90, 180, 184);
-		contentPane.add(lblTile3);
 
 		lblTile2.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(1) + ".png"));
-		lblTile2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTile2.setBounds(632, 90, 187, 193);
-		contentPane.add(lblTile2);
 
-		lblTile1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTile1.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(0) + ".png"));
-		lblTile1.setBounds(632, 339, 201, 193);
-		contentPane.add(lblTile1);
 	}
 }
