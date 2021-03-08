@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class MainMenu extends JFrame {
@@ -65,14 +64,19 @@ public class MainMenu extends JFrame {
 		contentPane.add(lblTitle);
 
 		JButton btnHowToPlay = new JButton("");
+		btnHowToPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				HowToPlay1 howToPlay1 = new HowToPlay1();
+				howToPlay1.newHowToPlay1();
+				setVisible(false);
+			}
+		});
 		btnHowToPlay.setIcon(new ImageIcon(MainMenu.class.getResource("/images/HowToPlay.png")));
-		btnHowToPlay.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnHowToPlay.setOpaque(false);
 		btnHowToPlay.setContentAreaFilled(false);
 		btnHowToPlay.setBorderPainted(false);
 		btnHowToPlay.setFocusPainted(false);
-		btnHowToPlay.setHorizontalAlignment(SwingConstants.LEFT);
-		btnHowToPlay.setBounds(429, 309, 365, 82);
+		btnHowToPlay.setBounds(434, 329, 273, 62);
 		contentPane.add(btnHowToPlay);
 
 		JButton btnPlay = new JButton("");

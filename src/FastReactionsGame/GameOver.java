@@ -3,6 +3,8 @@ package FastReactionsGame;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -46,21 +48,36 @@ public class GameOver extends JFrame {
 		setLocationRelativeTo(null);
 
 		JButton btnPlayAgain = new JButton("");
+		btnPlayAgain.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Game game = new Game();
+				game.newScreen();
+				setVisible(false);
+			}
+		});
+
 		btnPlayAgain.setIcon(new ImageIcon(GameOver.class.getResource("/images/Play Again.png")));
 		btnPlayAgain.setOpaque(false);
 		btnPlayAgain.setFocusPainted(false);
 		btnPlayAgain.setContentAreaFilled(false);
 		btnPlayAgain.setBorderPainted(false);
-		btnPlayAgain.setBounds(234, 511, 304, 82);
+		btnPlayAgain.setBounds(279, 521, 254, 62);
 		contentPane.add(btnPlayAgain);
 
 		JButton btnExit = new JButton("");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainMenu mainMenu = new MainMenu();
+				mainMenu.newMain();
+				setVisible(false);
+			}
+		});
 		btnExit.setIcon(new ImageIcon(GameOver.class.getResource("/images/Recurso 3.png")));
 		btnExit.setOpaque(false);
 		btnExit.setFocusPainted(false);
 		btnExit.setContentAreaFilled(false);
 		btnExit.setBorderPainted(false);
-		btnExit.setBounds(559, 511, 304, 82);
+		btnExit.setBounds(590, 521, 261, 62);
 		contentPane.add(btnExit);
 
 		JLabel lblScore = new JLabel("00000");

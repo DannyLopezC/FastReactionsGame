@@ -8,19 +8,21 @@ import java.util.Random;
 
 public class GameManager {
 
-	private int[] colors;
 	private int[] board;
 	private int round, state;
+	private int reactionTime;
+
+	public int getReactionTime() {
+		return reactionTime;
+	}
 
 	private Random random;
 
 	public GameManager() {
-		colors = board = new int[8];
-		for (int i = 1; i < 9; i++) {
-			colors[i] = i;
-		}
+		board = new int[8];
 
 		round = 0;
+		reactionTime = 1500;
 		random = new Random();
 	}
 
@@ -36,6 +38,7 @@ public class GameManager {
 				}
 			}
 
+			reactionTime -= 100;
 			board[random.nextInt(1)] = random.nextInt(7) + 1;
 		} else if (round < 4) {
 			for (int i = 0; i < 4; i++) {
@@ -43,6 +46,8 @@ public class GameManager {
 					board[i] = random.nextInt(7) + 1;
 				}
 			}
+
+			reactionTime -= 100;
 			board[random.nextInt(3)] = random.nextInt(7) + 1;
 		} else if (round < 6) {
 			for (int i = 0; i < 6; i++) {
@@ -50,6 +55,8 @@ public class GameManager {
 					board[i] = random.nextInt(7) + 1;
 				}
 			}
+
+			reactionTime -= 100;
 			board[random.nextInt(5)] = random.nextInt(7) + 1;
 		} else {
 			for (int i = 0; i < 8; i++) {
@@ -57,26 +64,34 @@ public class GameManager {
 					board[i] = random.nextInt(7) + 1;
 				}
 			}
+
+			reactionTime = 700;
 			board[random.nextInt(7)] = random.nextInt(7) + 1;
 		}
 	}
 
 	public void setGameState(boolean buttonPressed) {
-		int localInt = 0;
+
 		for (int i = 0; i < board.length; i++) {
-			if (board[localInt] == board[i]) {
+			if (board[i] == 0)
+				return;
+			for (int j = i + 1; j < board.length; j++) {
+
 				if (buttonPressed) {
-					state = 1;
-					return;
+					if (board[j] == board[i]) {
+						state = 1;
+					} else {
+						state = 2;
+					}
 				} else {
-					state = 2;
-					return;
+					if (board[j] == board[i] && board[i] != 0) {
+						state = 2;
+					} else {
+						state = 3;
+					}
 				}
 			}
-
-			localInt++;
 		}
-		state = 3;
 	}
 
 	public void reset() {
@@ -92,15 +107,15 @@ public class GameManager {
 	}
 
 	public void setRound() {
-		round++;
+		if (state == 2) {
+			round--;
+		} else {
+			round++;
+		}
 	}
 
-	public int[] getColors() {
-		return colors;
-	}
-
-	public int[] getBoard() {
-		return board;
+	public int getBoard(int i) {
+		return board[i];
 	}
 
 	public int getState() {

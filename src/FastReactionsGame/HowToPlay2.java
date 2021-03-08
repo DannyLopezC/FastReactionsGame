@@ -3,6 +3,8 @@ package FastReactionsGame;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,7 +25,7 @@ public class HowToPlay2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HowToPlay1 frame = new HowToPlay1();
+					HowToPlay2 frame = new HowToPlay2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,6 +48,13 @@ public class HowToPlay2 extends JFrame {
 		setLocationRelativeTo(null);
 
 		JButton btnLeftArrow = new JButton("");
+		btnLeftArrow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HowToPlay1 howToPlay1 = new HowToPlay1();
+				howToPlay1.newHowToPlay1();
+				setVisible(false);
+			}
+		});
 		btnLeftArrow.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/LeftArrow.png")));
 		btnLeftArrow.setOpaque(false);
 		btnLeftArrow.setFocusPainted(false);
@@ -55,7 +64,14 @@ public class HowToPlay2 extends JFrame {
 		contentPane.add(btnLeftArrow);
 
 		JButton btnRightArrow = new JButton("");
-		btnRightArrow.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/RightArrow.png")));
+		btnRightArrow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HowToPlay3 howToPlay3 = new HowToPlay3();
+				howToPlay3.newHowToPlay3();
+				setVisible(false);
+			}
+		});
+		btnRightArrow.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/RightArrow.png")));
 		btnRightArrow.setOpaque(false);
 		btnRightArrow.setFocusPainted(false);
 		btnRightArrow.setContentAreaFilled(false);
@@ -70,7 +86,7 @@ public class HowToPlay2 extends JFrame {
 		contentPane.add(lblPage);
 
 		JLabel lblImageExample = new JLabel("");
-		lblImageExample.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/img.png")));
+		lblImageExample.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/img.png")));
 		lblImageExample.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImageExample.setForeground(Color.WHITE);
 		lblImageExample.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
@@ -91,21 +107,28 @@ public class HowToPlay2 extends JFrame {
 
 		JLabel lblTextBox = new JLabel("");
 		lblTextBox.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTextBox.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/TextPanel.png")));
+		lblTextBox.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/TextPanel.png")));
 		lblTextBox.setForeground(Color.WHITE);
 		lblTextBox.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
 		lblTextBox.setBounds(100, 402, 918, 244);
 		contentPane.add(lblTextBox);
 
 		JLabel lblTitle = new JLabel("");
-		lblTitle.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/How to play.png")));
+		lblTitle.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/How to play.png")));
 		lblTitle.setForeground(Color.WHITE);
 		lblTitle.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
 		lblTitle.setBounds(879, 11, 265, 82);
 		contentPane.add(lblTitle);
 
 		JButton btnBack = new JButton("");
-		btnBack.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/Back.png")));
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainMenu mainMenu = new MainMenu();
+				mainMenu.newMain();
+				setVisible(false);
+			}
+		});
+		btnBack.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/Back.png")));
 		btnBack.setOpaque(false);
 		btnBack.setFocusPainted(false);
 		btnBack.setContentAreaFilled(false);

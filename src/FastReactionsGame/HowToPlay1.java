@@ -3,6 +3,8 @@ package FastReactionsGame;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -45,7 +47,30 @@ public class HowToPlay1 extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 
+		JButton btnBack = new JButton("");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainMenu mainMenu = new MainMenu();
+				mainMenu.newMain();
+				setVisible(false);
+			}
+		});
+		btnBack.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/Back.png")));
+		btnBack.setOpaque(false);
+		btnBack.setFocusPainted(false);
+		btnBack.setContentAreaFilled(false);
+		btnBack.setBorderPainted(false);
+		btnBack.setBounds(10, 11, 251, 59);
+		contentPane.add(btnBack);
+
 		JButton btnRightArrow = new JButton("");
+		btnRightArrow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HowToPlay2 howToPlay2 = new HowToPlay2();
+				howToPlay2.newHowToPlay2();
+				setVisible(false);
+			}
+		});
 		btnRightArrow.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/RightArrow.png")));
 		btnRightArrow.setOpaque(false);
 		btnRightArrow.setFocusPainted(false);
@@ -100,15 +125,6 @@ public class HowToPlay1 extends JFrame {
 		lblTitle.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
 		lblTitle.setBounds(879, 11, 265, 82);
 		contentPane.add(lblTitle);
-
-		JButton btnBack = new JButton("");
-		btnBack.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/Back.png")));
-		btnBack.setOpaque(false);
-		btnBack.setFocusPainted(false);
-		btnBack.setContentAreaFilled(false);
-		btnBack.setBorderPainted(false);
-		btnBack.setBounds(10, 11, 251, 59);
-		contentPane.add(btnBack);
 
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setFont(new Font("Tahoma", Font.PLAIN, 33));

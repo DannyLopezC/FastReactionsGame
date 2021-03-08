@@ -3,6 +3,8 @@ package FastReactionsGame;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,11 +21,11 @@ public class HowToPlay4 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void newHowToPlay2() {
+	public static void newHowToPlay4() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HowToPlay1 frame = new HowToPlay1();
+					HowToPlay4 frame = new HowToPlay4();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,6 +48,13 @@ public class HowToPlay4 extends JFrame {
 		setLocationRelativeTo(null);
 
 		JButton btnLeftArrow = new JButton("");
+		btnLeftArrow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HowToPlay3 howToPlay3 = new HowToPlay3();
+				howToPlay3.newHowToPlay3();
+				setVisible(false);
+			}
+		});
 		btnLeftArrow.setIcon(new ImageIcon(HowToPlay3.class.getResource("/images/LeftArrow.png")));
 		btnLeftArrow.setOpaque(false);
 		btnLeftArrow.setFocusPainted(false);
@@ -103,6 +112,13 @@ public class HowToPlay4 extends JFrame {
 		contentPane.add(lblTitle);
 
 		JButton btnBack = new JButton("");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainMenu mainMenu = new MainMenu();
+				mainMenu.newMain();
+				setVisible(false);
+			}
+		});
 		btnBack.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/Back.png")));
 		btnBack.setOpaque(false);
 		btnBack.setFocusPainted(false);
