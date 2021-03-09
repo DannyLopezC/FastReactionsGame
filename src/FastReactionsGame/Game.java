@@ -20,6 +20,11 @@ public class Game extends JFrame {
 	private JPanel contentPane;
 	private GameManager gameManager;
 	private PlayerManager playerManager;
+	private Listener listener;
+//	private Timer timer;
+
+	JButton btnExitMain;
+	JButton btnButton;
 
 	JLabel lblTile8 = new JLabel("");
 	JLabel lblTile7 = new JLabel("");
@@ -53,7 +58,7 @@ public class Game extends JFrame {
 	public Game() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1154, 646);
-		this.setUndecorated(true);
+//		this.setUndecorated(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -102,30 +107,23 @@ public class Game extends JFrame {
 
 		gameManager = new GameManager();
 		playerManager = new PlayerManager();
+		listener = new Listener();
 
 		gameManager.setInBoard(true);
 		setBoardUI();
 		timer.start();
 
-		JButton btnExitMain = new JButton("");
-		btnExitMain.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainMenu mainMenu = new MainMenu();
-				mainMenu.newMain();
-				gameManager.reset();
-				playerManager.reset();
-				setVisible(false);
-			}
-		});
+		btnExitMain = new JButton("");
+		btnExitMain.addActionListener(listener);
+		btnExitMain.setIcon(new ImageIcon(Game.class.getResource("/images/ExitMain.png")));
+		btnExitMain.setOpaque(false);
+		btnExitMain.setFocusPainted(false);
+		btnExitMain.setContentAreaFilled(false);
+		btnExitMain.setBorderPainted(false);
+		btnExitMain.setBounds(825, 277, 304, 82);
 
-		JButton btnButton = new JButton("");
-		btnButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				gameManager.setGameState(true);
-				evaluateGameState();
-			}
-		});
-
+		btnButton = new JButton("");
+		btnButton.addActionListener(listener);
 		btnButton.setIcon(new ImageIcon(Game.class.getResource("/images/button@2x.png")));
 		btnButton.setOpaque(false);
 		btnButton.setFocusPainted(false);
@@ -160,12 +158,6 @@ public class Game extends JFrame {
 		lblScoreString.setFont(new Font("Bahnschrift", Font.PLAIN, 37));
 		lblScoreString.setBounds(35, 227, 110, 54);
 		contentPane.add(lblScoreString);
-		btnExitMain.setIcon(new ImageIcon(Game.class.getResource("/images/ExitMain.png")));
-		btnExitMain.setOpaque(false);
-		btnExitMain.setFocusPainted(false);
-		btnExitMain.setContentAreaFilled(false);
-		btnExitMain.setBorderPainted(false);
-		btnExitMain.setBounds(825, 277, 304, 82);
 		contentPane.add(btnExitMain);
 
 		JLabel lblBackground = new JLabel("");
@@ -180,6 +172,7 @@ public class Game extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			System.out.println("timer");
 			gameManager.setGameState(false);
 			evaluateGameState();
 		}
@@ -192,7 +185,7 @@ public class Game extends JFrame {
 			break;
 		case 2:
 			gameManager.setRound();
-			System.out.println("pierde");
+//			System.out.println("pierde");
 			break;
 		case 3:
 			gameManager.setRound();
@@ -215,6 +208,7 @@ public class Game extends JFrame {
 
 		gameManager.setInBoard(true);
 		setBoardUI();
+		timer.start();
 	}
 
 	private void setBoardUI() {
@@ -236,5 +230,30 @@ public class Game extends JFrame {
 		lblTile1.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(0) + ".png"));
 
 		lblScore.setText("00" + playerManager.getScore());
+	}
+
+	private class Listener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+
+			if (e.getSource() == btnExitMain) {
+				MainMenu mainMenu = new MainMenu();
+				mainMenu.newMain();
+				gameManager.reset();
+				playerManager.reset();
+				setVisible(false);
+			}
+
+			if (e.getSource() == btnButton) {
+				timer.stop();
+				gameManager.setGameState(true);
+				evaluateGameState();
+			} else {
+
+			}
+		}
+
 	}
 }

@@ -48,6 +48,7 @@ public class GameManager {
 	 */
 	public void setInBoard(boolean set) {
 		if (set) {
+			isDuplicate = false;
 			inBoard.clear();
 			setOutBoard();
 			for (int i = 0; i < pieces; i++) {
@@ -56,7 +57,7 @@ public class GameManager {
 				outBoard.remove(id);
 			}
 		} else {
-			isDuplicate = random.nextInt(2) == 1 ? true : false;
+			isDuplicate = random.nextBoolean();
 
 			int id = random.nextInt(pieces);
 			if (isDuplicate) {
@@ -79,7 +80,7 @@ public class GameManager {
 	}
 
 	public void setGameState(boolean buttonPressed) {
-
+		System.out.println("buttonPressed: " + buttonPressed + "\n" + "duplicate: " + isDuplicate);
 		if (buttonPressed) {
 			if (isDuplicate) {
 				state = 1;
@@ -93,6 +94,7 @@ public class GameManager {
 				state = 3;
 			}
 		}
+		System.out.println("state: " + state + "\n");
 	}
 
 	public void reset() {
