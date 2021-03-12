@@ -16,6 +16,9 @@ public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
 
+	private Game game;
+	private HowToPlay1 howToPlay1;
+
 	public static void newMain() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -66,7 +69,7 @@ public class MainMenu extends JFrame {
 		JButton btnHowToPlay = new JButton("");
 		btnHowToPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				HowToPlay1 howToPlay1 = new HowToPlay1();
+				howToPlay1 = new HowToPlay1();
 				howToPlay1.newHowToPlay1();
 				setVisible(false);
 			}
@@ -82,7 +85,7 @@ public class MainMenu extends JFrame {
 		JButton btnPlay = new JButton("");
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Game game = new Game();
+				game = new Game();
 				game.newScreen();
 				setVisible(false);
 			}
@@ -101,5 +104,13 @@ public class MainMenu extends JFrame {
 		lblBackground.setIcon(new ImageIcon(MainMenu.class.getResource("/images/Recurso 1.png")));
 		lblBackground.setBounds(0, 0, 1154, 646);
 		contentPane.add(lblBackground);
+	}
+
+	public void Update() {
+		if (game != null)
+			game.Update();
+
+		if (howToPlay1 != null)
+			howToPlay1.Update();
 	}
 }

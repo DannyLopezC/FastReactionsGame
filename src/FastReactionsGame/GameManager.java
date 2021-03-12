@@ -12,10 +12,11 @@ public class GameManager {
 	private ArrayList<Integer> inBoard, outBoard;
 	private int pieces;
 	private int round, state;
-	private int reactionTime;
+	private int changedId;
+	private long reactionTime;
 	private boolean isDuplicate;
 
-	public int getReactionTime() {
+	public long getReactionTime() {
 		return reactionTime;
 	}
 
@@ -76,6 +77,7 @@ public class GameManager {
 				outBoard.remove(outId);
 				outBoard.add(inValue);
 			}
+			changedId = id;
 		}
 	}
 
@@ -107,6 +109,10 @@ public class GameManager {
 
 	public int getRound() {
 		return round;
+	}
+
+	public int getChangedId() {
+		return changedId;
 	}
 
 	public void setRound() {

@@ -132,4 +132,8 @@ public class HowToPlay1 extends JFrame {
 		lblBackground.setBounds(0, 0, 1154, 646);
 		contentPane.add(lblBackground);
 	}
+
+	public void Update() {
+
+	}
 }
