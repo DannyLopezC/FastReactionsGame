@@ -22,7 +22,7 @@ public class GameOver extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void newGameOver(int localScore, int localAccurate, int localMistakes) {
+	public void newGameOver(int localScore, int localAccurate, int localMistakes) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -56,8 +56,9 @@ public class GameOver extends JFrame {
 		btnPlayAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				Game game = new Game();
-				game.newScreen();
+				MainMenu mainMenu = new MainMenu();
+				mainMenu.newMain();
+
 			}
 		});
 
@@ -73,10 +74,10 @@ public class GameOver extends JFrame {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				MainMenu mainMenu = new MainMenu();
-				mainMenu.newMain();
+				System.exit(0);
 			}
 		});
+
 		btnExit.setIcon(new ImageIcon(GameOver.class.getResource("/images/Recurso 3.png")));
 		btnExit.setOpaque(false);
 		btnExit.setFocusPainted(false);

@@ -12,7 +12,7 @@ public class GameManager {
 	private ArrayList<Integer> inBoard, outBoard;
 	private int pieces;
 	private int round, state;
-	private int changedId;
+	private int changedId, correctId;
 	private long reactionTime;
 	private boolean isDuplicate;
 
@@ -69,6 +69,7 @@ public class GameManager {
 				} while (id == targetId);
 
 				inBoard.set(id, inBoard.get(targetId));
+				correctId = targetId;
 
 			} else {
 				int inValue = inBoard.get(id);
@@ -113,6 +114,10 @@ public class GameManager {
 
 	public int getChangedId() {
 		return changedId;
+	}
+
+	public int getCorrectId() {
+		return correctId;
 	}
 
 	public void setRound() {

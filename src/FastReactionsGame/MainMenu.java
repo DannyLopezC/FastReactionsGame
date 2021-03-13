@@ -105,12 +105,4 @@ public class MainMenu extends JFrame {
 		lblBackground.setBounds(0, 0, 1154, 646);
 		contentPane.add(lblBackground);
 	}
-
-	public void Update() {
-		if (game != null)
-			game.Update();
-
-		if (howToPlay1 != null)
-			howToPlay1.Update();
-	}
 }

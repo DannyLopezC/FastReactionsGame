@@ -26,15 +26,15 @@ public class PrincipalFastReactions {
 			}
 		});
 
-		Timer timer = new Timer();
-
-		timer.schedule(new TimerTask() {
-			public void run() {
-				// do your work
-				if (frame != null)
-					frame.Update();
-			}
-		}, deltaTime, deltaTime);
+//		Timer timer = new Timer();
+//
+//		timer.schedule(new TimerTask() {
+//			public void run() {
+//				// do your work
+//				if (frame != null)
+//					frame.Update();
+//			}
+//		}, deltaTime, deltaTime);
 
 //		ConsoleView consoleview = new ConsoleView();
 //		consoleview.startGame();

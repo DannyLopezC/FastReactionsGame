@@ -37,7 +37,7 @@ public class PlayerManager {
 	public void setScreenVariables(int state) {
 		switch (state) {
 		case 1:
-			score += 50;
+			score += 5;
 			accurate++;
 			break;
 		case 2:
