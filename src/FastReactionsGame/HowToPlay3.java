@@ -86,11 +86,11 @@ public class HowToPlay3 extends JFrame {
 		contentPane.add(lblPage);
 
 		JLabel lblImageExample = new JLabel("");
-		lblImageExample.setIcon(new ImageIcon(HowToPlay3.class.getResource("/images/img.png")));
+		lblImageExample.setIcon(new ImageIcon(HowToPlay3.class.getResource("/images/htp2.png")));
 		lblImageExample.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImageExample.setForeground(Color.WHITE);
 		lblImageExample.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
-		lblImageExample.setBounds(215, 70, 654, 331);
+		lblImageExample.setBounds(231, 66, 608, 347);
 		contentPane.add(lblImageExample);
 
 		JLabel lblText3 = new JLabel("-Press the return key on the keyboard.");

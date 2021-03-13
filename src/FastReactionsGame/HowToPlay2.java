@@ -21,7 +21,7 @@ public class HowToPlay2 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void newHowToPlay2() {
+	public void newHowToPlay2() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -55,6 +55,24 @@ public class HowToPlay2 extends JFrame {
 				setVisible(false);
 			}
 		});
+
+		JButton btnSignalArrow = new JButton("");
+		btnSignalArrow.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/flecha-correcta.png")));
+		btnSignalArrow.setOpaque(false);
+		btnSignalArrow.setFocusPainted(false);
+		btnSignalArrow.setContentAreaFilled(false);
+		btnSignalArrow.setBorderPainted(false);
+		btnSignalArrow.setBounds(527, 300, 40, 82);
+		contentPane.add(btnSignalArrow);
+
+		JLabel lblImageExample = new JLabel("");
+		lblImageExample.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/htp2.png")));
+		lblImageExample.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImageExample.setForeground(Color.WHITE);
+		lblImageExample.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
+		lblImageExample.setBounds(231, 66, 608, 347);
+		contentPane.add(lblImageExample);
+
 		btnLeftArrow.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/LeftArrow.png")));
 		btnLeftArrow.setOpaque(false);
 		btnLeftArrow.setFocusPainted(false);
@@ -84,14 +102,6 @@ public class HowToPlay2 extends JFrame {
 		lblPage.setFont(new Font("Bahnschrift", Font.PLAIN, 37));
 		lblPage.setBounds(506, 26, 54, 45);
 		contentPane.add(lblPage);
-
-		JLabel lblImageExample = new JLabel("");
-		lblImageExample.setIcon(new ImageIcon(HowToPlay2.class.getResource("/images/img.png")));
-		lblImageExample.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImageExample.setForeground(Color.WHITE);
-		lblImageExample.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
-		lblImageExample.setBounds(215, 70, 654, 331);
-		contentPane.add(lblImageExample);
 
 		JLabel lblText2 = new JLabel("the white button that appears on the middle of the screen.");
 		lblText2.setForeground(Color.BLACK);

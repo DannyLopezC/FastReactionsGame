@@ -21,7 +21,7 @@ public class HowToPlay1 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void newHowToPlay1() {
+	public void newHowToPlay1() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -86,14 +86,14 @@ public class HowToPlay1 extends JFrame {
 		contentPane.add(lblPage);
 
 		JLabel lblImageExample = new JLabel("");
-		lblImageExample.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/img.png")));
+		lblImageExample.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/htp1.png")));
 		lblImageExample.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImageExample.setForeground(Color.WHITE);
 		lblImageExample.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
-		lblImageExample.setBounds(215, 70, 654, 331);
+		lblImageExample.setBounds(231, 66, 608, 347);
 		contentPane.add(lblImageExample);
 
-		JLabel lblText3 = new JLabel("at any time thanks to a blue border.");
+		JLabel lblText3 = new JLabel("at any time thanks to a white dotted border line.");
 		lblText3.setForeground(Color.BLACK);
 		lblText3.setFont(new Font("Bahnschrift", Font.PLAIN, 25));
 		lblText3.setBounds(136, 535, 861, 59);

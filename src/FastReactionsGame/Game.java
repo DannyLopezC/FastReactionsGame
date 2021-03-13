@@ -26,10 +26,7 @@ public class Game extends JFrame {
 	private PlayerManager playerManager;
 
 	private ButtonsListener buttonsListener;
-	public ResetListener resetListener;
-
-	private boolean isButton;
-	private boolean stop;
+	private ResumeListener resumeListener;
 
 	JButton btnExitMain;
 	JButton btnButton;
@@ -68,6 +65,7 @@ public class Game extends JFrame {
 
 	TimerListener timerListener;
 	Timer timer;
+	Timer resumeTimer;
 	int deltaTime = 1000 / 30;
 
 	/**
@@ -246,7 +244,7 @@ public class Game extends JFrame {
 		gameManager = new GameManager();
 		playerManager = new PlayerManager();
 		buttonsListener = new ButtonsListener();
-		resetListener = new ResetListener();
+		resumeListener = new ResumeListener();
 
 		gameManager.setInBoard(true);
 		setBoardUI(true);
@@ -307,10 +305,11 @@ public class Game extends JFrame {
 
 		timerListener = new TimerListener();
 		timer = new Timer(deltaTime, timerListener);
+		resumeTimer = new Timer(1000, resumeListener);
 
 		timer.start();
 		time = 0;
-		timeNextReset = 1000;
+		timeNextReset = gameManager.getReactionTime();
 	}
 
 	private void evaluateGameState() {
@@ -338,24 +337,24 @@ public class Game extends JFrame {
 			gameOver.newGameOver(playerManager.getScore(), playerManager.getAccurate(), playerManager.getMistakes());
 			gameManager.reset();
 			playerManager.reset();
-			stop = true;
+			timer.stop();
 			setVisible(false);
 			return;
 		}
 
-		gameManager.setInBoard(true);
-		setBoardUI(true);
+		timer.stop();
+		resumeTimer.start();
 	}
 
 	private void setBoardUI(boolean set) {
-		lblTile8Selected.setVisible(false);
-		lblTile7Selected.setVisible(false);
-		lblTile6Selected.setVisible(false);
-		lblTile5Selected.setVisible(false);
-		lblTile4Selected.setVisible(false);
-		lblTile3Selected.setVisible(false);
-		lblTile2Selected.setVisible(false);
-		lblTile1Selected.setVisible(false);
+		lblTile1Correct.setVisible(false);
+		lblTile2Correct.setVisible(false);
+		lblTile3Correct.setVisible(false);
+		lblTile4Correct.setVisible(false);
+		lblTile5Correct.setVisible(false);
+		lblTile6Correct.setVisible(false);
+		lblTile7Correct.setVisible(false);
+		lblTile8Correct.setVisible(false);
 
 		lblTile8.setIcon(new ImageIcon("src/Images/" + gameManager.getBoard(7) + ".png"));
 		lblTile8Selected.setVisible(false);
@@ -439,6 +438,15 @@ public class Game extends JFrame {
 		lblTile2Selected.setVisible(false);
 		lblTile1Selected.setVisible(false);
 
+		lblTile1Correct.setVisible(false);
+		lblTile2Correct.setVisible(false);
+		lblTile3Correct.setVisible(false);
+		lblTile4Correct.setVisible(false);
+		lblTile5Correct.setVisible(false);
+		lblTile6Correct.setVisible(false);
+		lblTile7Correct.setVisible(false);
+		lblTile8Correct.setVisible(false);
+
 		switch (gameManager.getChangedId()) {
 		case 0:
 			lblTile1Correct.setVisible(true);
@@ -509,7 +517,8 @@ public class Game extends JFrame {
 			}
 
 			if (e.getSource() == btnButton) {
-				isButton = true;
+				gameManager.setGameState(true);
+				evaluateGameState();
 			}
 		}
 
@@ -517,7 +526,8 @@ public class Game extends JFrame {
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getKeyCode() == 10) {
-				isButton = true;
+				gameManager.setGameState(true);
+				evaluateGameState();
 			}
 		}
 
@@ -534,12 +544,6 @@ public class Game extends JFrame {
 		}
 	}
 
-	public class ResetListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		}
-	}
-
 	public class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -552,19 +556,27 @@ public class Game extends JFrame {
 	int timeNextReset;
 
 	public void Update() {
-		if (stop)
-			return;
-
 		time += deltaTime;
 //		System.out.println("current time: " + time);
 		if (time >= timeNextReset) {
 //				game.resetListener.actionPerformed(null);
 
-			gameManager.setGameState(isButton);
+			gameManager.setGameState(false);
 			evaluateGameState();
-			isButton = false;
 
-			timeNextReset = time + 1000;
+			timeNextReset = time + gameManager.getReactionTime();
+		}
+	}
+
+	public class ResumeListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+
+			gameManager.setInBoard(true);
+			setBoardUI(true);
+			timer.start();
+			resumeTimer.stop();
 		}
 	}
 }

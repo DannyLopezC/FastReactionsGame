@@ -55,6 +55,24 @@ public class HowToPlay4 extends JFrame {
 				setVisible(false);
 			}
 		});
+
+		JButton btnSignalArrow_1 = new JButton("");
+		btnSignalArrow_1.setIcon(new ImageIcon(HowToPlay4.class.getResource("/images/LiveArrow.png")));
+		btnSignalArrow_1.setOpaque(false);
+		btnSignalArrow_1.setFocusPainted(false);
+		btnSignalArrow_1.setContentAreaFilled(false);
+		btnSignalArrow_1.setBorderPainted(false);
+		btnSignalArrow_1.setBounds(292, 259, 53, 132);
+		contentPane.add(btnSignalArrow_1);
+
+		JButton btnSignalArrow = new JButton("");
+		btnSignalArrow.setIcon(new ImageIcon(HowToPlay4.class.getResource("/images/LiveArrow.png")));
+		btnSignalArrow.setOpaque(false);
+		btnSignalArrow.setFocusPainted(false);
+		btnSignalArrow.setContentAreaFilled(false);
+		btnSignalArrow.setBorderPainted(false);
+		btnSignalArrow.setBounds(242, 259, 53, 132);
+		contentPane.add(btnSignalArrow);
 		btnLeftArrow.setIcon(new ImageIcon(HowToPlay3.class.getResource("/images/LeftArrow.png")));
 		btnLeftArrow.setOpaque(false);
 		btnLeftArrow.setFocusPainted(false);
@@ -70,11 +88,11 @@ public class HowToPlay4 extends JFrame {
 		contentPane.add(lblPage);
 
 		JLabel lblImageExample = new JLabel("");
-		lblImageExample.setIcon(new ImageIcon(HowToPlay1.class.getResource("/images/img.png")));
+		lblImageExample.setIcon(new ImageIcon(HowToPlay4.class.getResource("/images/htp4.png")));
 		lblImageExample.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImageExample.setForeground(Color.WHITE);
 		lblImageExample.setFont(new Font("Bahnschrift", Font.PLAIN, 72));
-		lblImageExample.setBounds(215, 70, 654, 331);
+		lblImageExample.setBounds(231, 66, 608, 347);
 		contentPane.add(lblImageExample);
 
 		JLabel lblText3 = new JLabel("reaction is lower.  You will need Fast Reactions!");

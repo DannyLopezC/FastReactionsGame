@@ -13,10 +13,10 @@ public class GameManager {
 	private int pieces;
 	private int round, state;
 	private int changedId, correctId;
-	private long reactionTime;
+	private int reactionTime;
 	private boolean isDuplicate;
 
-	public long getReactionTime() {
+	public int getReactionTime() {
 		return reactionTime;
 	}
 
@@ -29,7 +29,7 @@ public class GameManager {
 
 		round = 0;
 		pieces = 3;
-		reactionTime = 2500;
+		reactionTime = 2100;
 		random = new Random();
 	}
 
@@ -123,11 +123,16 @@ public class GameManager {
 	public void setRound() {
 		switch (state) {
 		case 1:
+			if (reactionTime > 700)
+				reactionTime -= 200;
+
 			round++;
 			if (pieces < 8)
 				pieces++;
 			break;
 		case 2:
+			if (reactionTime < 2100)
+				reactionTime += 200;
 			if (round > 0)
 				round--;
 			if (pieces > 3)
