@@ -419,6 +419,7 @@ public class Game extends JFrame {
 			gameManager.reset();
 			playerManager.reset();
 			timer.stop();
+			resumeTimer.stop();
 			setVisible(false);
 			return;
 		}
@@ -622,6 +623,8 @@ public class Game extends JFrame {
 				gameManager.reset();
 				playerManager.reset();
 				setVisible(false);
+				timer.stop();
+				resumeTimer.stop();
 			}
 
 			if (e.getSource() == btnButton) {
