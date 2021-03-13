@@ -24,6 +24,10 @@ public class GameOver extends JFrame {
 	 */
 	public void newGameOver(int localScore, int localAccurate, int localMistakes) {
 		EventQueue.invokeLater(new Runnable() {
+
+			/**
+			 * Run.
+			 */
 			public void run() {
 				try {
 					GameOver frame = new GameOver(localScore, localAccurate, localMistakes);

@@ -20,6 +20,7 @@ public class GameManager {
 		return reactionTime;
 	}
 
+	/** The random. */
 	private Random random;
 
 	public GameManager() {

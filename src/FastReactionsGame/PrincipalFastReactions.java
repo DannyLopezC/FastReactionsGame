@@ -1,8 +1,6 @@
 package FastReactionsGame;
 
 import java.awt.EventQueue;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class PrincipalFastReactions {
 
@@ -14,6 +12,10 @@ public class PrincipalFastReactions {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+
+			/**
+			 * Run.
+			 */
 			public void run() {
 				try {
 					frame = new MainMenu();
@@ -25,18 +27,5 @@ public class PrincipalFastReactions {
 
 			}
 		});
-
-//		Timer timer = new Timer();
-//
-//		timer.schedule(new TimerTask() {
-//			public void run() {
-//				// do your work
-//				if (frame != null)
-//					frame.Update();
-//			}
-//		}, deltaTime, deltaTime);
-
-//		ConsoleView consoleview = new ConsoleView();
-//		consoleview.startGame();
 	}
 }

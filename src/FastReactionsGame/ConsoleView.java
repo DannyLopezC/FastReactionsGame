@@ -15,6 +15,9 @@ public class ConsoleView {
 
 	}
 
+	/**
+	 * Start game.
+	 */
 	public void startGame() {
 		if (gameManager.getState() == 1 || gameManager.getState() == 2 || gameManager.getState() == 0) {
 			gameManager.setInBoard(true);

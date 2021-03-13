@@ -17,55 +17,133 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Game.
+ */
 public class Game extends JFrame {
+
+	/**
+	 * Instantiates a new game.
+	 */
 	public Game() {
 	}
 
+	/** The content pane. */
 	private JPanel contentPane;
+
+	/** The game manager. */
 	private GameManager gameManager;
+
+	/** The player manager. */
 	private PlayerManager playerManager;
 
+	/** The buttons listener. */
 	private ButtonsListener buttonsListener;
+
+	/** The resume listener. */
 	private ResumeListener resumeListener;
 
+	/** The btn exit main. */
 	JButton btnExitMain;
+
+	/** The btn button. */
 	JButton btnButton;
 
+	/** The lbl tile 8 selected. */
 	JLabel lblTile8Selected = new JLabel("");
+
+	/** The lbl tile 7 selected. */
 	JLabel lblTile7Selected = new JLabel("");
+
+	/** The lbl tile 6 selected. */
 	JLabel lblTile6Selected = new JLabel("");
+
+	/** The lbl tile 5 selected. */
 	JLabel lblTile5Selected = new JLabel("");
+
+	/** The lbl tile 4 selected. */
 	JLabel lblTile4Selected = new JLabel("");
+
+	/** The lbl tile 3 selected. */
 	JLabel lblTile3Selected = new JLabel("");
+
+	/** The lbl tile 2 selected. */
 	JLabel lblTile2Selected = new JLabel("");
+
+	/** The lbl tile 1 selected. */
 	JLabel lblTile1Selected = new JLabel("");
 
+	/** The lbl tile 8 correct. */
 	JLabel lblTile8Correct = new JLabel("");
+
+	/** The lbl tile 7 correct. */
 	JLabel lblTile7Correct = new JLabel("");
+
+	/** The lbl tile 6 correct. */
 	JLabel lblTile6Correct = new JLabel("");
+
+	/** The lbl tile 5 correct. */
 	JLabel lblTile5Correct = new JLabel("");
+
+	/** The lbl tile 4 correct. */
 	JLabel lblTile4Correct = new JLabel("");
+
+	/** The lbl tile 3 correct. */
 	JLabel lblTile3Correct = new JLabel("");
+
+	/** The lbl tile 2 correct. */
 	JLabel lblTile2Correct = new JLabel("");
+
+	/** The lbl tile 1 correct. */
 	JLabel lblTile1Correct = new JLabel("");
 
+	/** The lbl tile 8. */
 	JLabel lblTile8 = new JLabel("");
+
+	/** The lbl tile 7. */
 	JLabel lblTile7 = new JLabel("");
+
+	/** The lbl tile 6. */
 	JLabel lblTile6 = new JLabel("");
+
+	/** The lbl tile 5. */
 	JLabel lblTile5 = new JLabel("");
+
+	/** The lbl tile 4. */
 	JLabel lblTile4 = new JLabel("");
+
+	/** The lbl tile 3. */
 	JLabel lblTile3 = new JLabel("");
+
+	/** The lbl tile 2. */
 	JLabel lblTile2 = new JLabel("");
+
+	/** The lbl tile 1. */
 	JLabel lblTile1 = new JLabel("");
+
+	/** The lbl score. */
 	JLabel lblScore = new JLabel("");
 
+	/** The lbl lives 1. */
 	JLabel lblLives1;
+
+	/** The lbl lives 2. */
 	JLabel lblLives2;
+
+	/** The lbl lives 3. */
 	JLabel lblLives3;
 
+	/** The timer listener. */
 	TimerListener timerListener;
+
+	/** The timer. */
 	Timer timer;
+
+	/** The resume timer. */
 	Timer resumeTimer;
+
+	/** The delta time. */
 	int deltaTime = 1000 / 30;
 
 	/**
@@ -312,6 +390,9 @@ public class Game extends JFrame {
 		timeNextReset = gameManager.getReactionTime();
 	}
 
+	/**
+	 * Evaluate game state.
+	 */
 	private void evaluateGameState() {
 		switch (gameManager.getState()) {
 		case 1:
@@ -346,6 +427,11 @@ public class Game extends JFrame {
 		resumeTimer.start();
 	}
 
+	/**
+	 * Sets the board UI.
+	 *
+	 * @param set the new board UI
+	 */
 	private void setBoardUI(boolean set) {
 		lblTile1Correct.setVisible(false);
 		lblTile2Correct.setVisible(false);
@@ -413,6 +499,11 @@ public class Game extends JFrame {
 		}
 	}
 
+	/**
+	 * Sets the lives GUI.
+	 *
+	 * @param lives the new lives GUI
+	 */
 	public void setLivesGUI(int lives) {
 		switch (lives) {
 		case 2:
@@ -428,6 +519,9 @@ public class Game extends JFrame {
 
 	}
 
+	/**
+	 * Sets the correct GUI.
+	 */
 	public void setCorrectGUI() {
 		lblTile8Selected.setVisible(false);
 		lblTile7Selected.setVisible(false);
@@ -502,8 +596,22 @@ public class Game extends JFrame {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving buttons events. The class that is
+	 * interested in processing a buttons event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addButtonsListener<code> method. When the buttons event
+	 * occurs, that object's appropriate method is invoked.
+	 *
+	 * @see ButtonsEvent
+	 */
 	private class ButtonsListener implements ActionListener, KeyListener {
 
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
@@ -522,6 +630,11 @@ public class Game extends JFrame {
 			}
 		}
 
+		/**
+		 * Key pressed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
 			// TODO Auto-generated method stub
@@ -531,12 +644,22 @@ public class Game extends JFrame {
 			}
 		}
 
+		/**
+		 * Key released.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
 
 		}
 
+		/**
+		 * Key typed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
@@ -544,7 +667,22 @@ public class Game extends JFrame {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving timer events. The class that is
+	 * interested in processing a timer event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addTimerListener<code> method. When the timer event occurs,
+	 * that object's appropriate method is invoked.
+	 *
+	 * @see TimerEvent
+	 */
 	public class TimerListener implements ActionListener {
+
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
@@ -552,9 +690,15 @@ public class Game extends JFrame {
 		}
 	}
 
+	/** The time. */
 	int time;
+
+	/** The time next reset. */
 	int timeNextReset;
 
+	/**
+	 * Update.
+	 */
 	public void Update() {
 		time += deltaTime;
 //		System.out.println("current time: " + time);
@@ -568,7 +712,22 @@ public class Game extends JFrame {
 		}
 	}
 
+	/**
+	 * The listener interface for receiving resume events. The class that is
+	 * interested in processing a resume event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addResumeListener<code> method. When the resume event
+	 * occurs, that object's appropriate method is invoked.
+	 *
+	 * @see ResumeEvent
+	 */
 	public class ResumeListener implements ActionListener {
+
+		/**
+		 * Action performed.
+		 *
+		 * @param e the e
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub

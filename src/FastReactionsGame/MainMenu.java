@@ -84,6 +84,12 @@ public class MainMenu extends JFrame {
 
 		JButton btnPlay = new JButton("");
 		btnPlay.addActionListener(new ActionListener() {
+
+			/**
+			 * Action performed.
+			 *
+			 * @param e the e
+			 */
 			public void actionPerformed(ActionEvent e) {
 				game = new Game();
 				game.newScreen();
